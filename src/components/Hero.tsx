@@ -1,139 +1,97 @@
 import { motion } from "motion/react";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaWhatsapp,
-  FaChevronDown,
-} from "react-icons/fa";
-import { useState, useEffect } from "react";
+import { FaArrowDown } from "react-icons/fa";
+import codeReviewImg from "../assets/code-review.svg";
 
 export function Hero() {
-  const [displayedText, setDisplayedText] = useState("");
-  const [showRole, setShowRole] = useState(false);
-
-  const texts = ["Antonio Claudio", "Desenvolvedor Full Stack"];
-  const longestText = texts.reduce((longest, text) =>
-    text.length > longest.length ? text : longest,
-  );
-  const currentText = texts[showRole ? 1 : 0];
-
-  useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout>;
-    let charIndex = 0;
-
-    const type = () => {
-      if (charIndex <= currentText.length) {
-        setDisplayedText(currentText.slice(0, charIndex));
-        charIndex++;
-        timeout = setTimeout(type, 100);
-      } else {
-        timeout = setTimeout(() => {
-          setShowRole((prev) => !prev);
-          setDisplayedText("");
-        }, 3000);
-      }
-    };
-
-    type();
-
-    return () => clearTimeout(timeout);
-  }, [showRole, currentText]);
-
   return (
     <motion.header
-      className="w-full min-h-screen flex items-center justify-center bg-linear-to-br from-slate-950 via-blue-950 to-slate-950  pt-20"
+      className="w-full min-h-screen bg-[#1e242c] relative flex flex-col justify-center overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-16">
+      <div className="absolute top-0 bottom-0 left-[35%] w-px bg-white/5 hidden lg:block" />
+
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-12 pt-24 lg:pt-32 relative z-10 flex-1 flex flex-col justify-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-8">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col justify-center order-1 lg:order-0"
+            className="flex flex-col justify-center text-center lg:text-left order-1 lg:order-0 relative lg:col-span-7 xl:col-span-7"
           >
+            <div className="absolute -left-12 sm:-left-20 top-16 hidden lg:block opacity-60">
+              <svg
+                width="60"
+                height="100"
+                viewBox="0 0 60 100"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M50 10 C30 20, 20 40, 15 60 C10 80, 20 90, 40 95"
+                  stroke="#2dd4bf"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  fill="transparent"
+                />
+                <path
+                  d="M35 85 L40 95 L30 100"
+                  stroke="#2dd4bf"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="transparent"
+                />
+              </svg>
+            </div>
+
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.6 }}
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+              className="font-extrabold mb-8 leading-[1.05] uppercase tracking-wider"
             >
-              <span className="text-white">Olá, eu sou</span>
-              <br />
-              <span className="relative inline-flex items-center min-h-20 sm:min-h-24 lg:min-h-32">
-                <span className="invisible bg-linear-to-r from-emerald-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                  {longestText}
-                </span>
-                <span className="absolute inset-0 bg-linear-to-r from-emerald-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                  {displayedText}
-                  <motion.span
-                    animate={{ opacity: [1, 0] }}
-                    transition={{ duration: 0.5, repeat: Infinity }}
-                    className="ml-1"
-                  >
-                    |
-                  </motion.span>
-                </span>
+              <span className="text-white block text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl leading-tight">
+                Desenvolvedor
+              </span>
+              <span className="text-teal-500 block text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl mt-1 leading-tight">
+                Full Stack
               </span>
             </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-lg sm:text-xl text-slate-300 mb-8 leading-relaxed max-w-2xl"
-            >
-              Sou desenvolvedor full stack, graduado em Ciência da Computação
-              pelo IFMA, com experiência sólida em React, Next.js, Python
-              (FastAPI e Django), TypeScript, Firebase e SQL. Tenho foco em
-              soluções escaláveis, performance, UX/UI e integração eficiente
-              entre frontend e backend.
-            </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.6 }}
-              className="flex items-center gap-4 mb-10"
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mt-2"
             >
               <a
-                href="https://github.com/antonioclaudioofc"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full bg-slate-800/50 hover:bg-emerald-500/20 flex items-center justify-center transition-all duration-300 hover:scale-110 border border-slate-700/50 hover:border-emerald-400/50"
+                href="#contact"
+                className="w-full sm:w-auto text-center px-8 py-3.5 bg-teal-500 hover:bg-teal-400 text-white rounded-full font-bold text-sm sm:text-base transition-colors"
               >
-                <FaGithub className="text-xl text-slate-300 hover:text-emerald-400 transition-colors" />
+                Contrate-me
               </a>
               <a
-                href="https://www.linkedin.com/in/antonioclaudioofc/"
+                href="/Antonio Claudio Teixeira Alves.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full bg-slate-800/50 hover:bg-emerald-500/20 flex items-center justify-center transition-all duration-300 hover:scale-110 border border-slate-700/50 hover:border-emerald-400/50"
+                className="w-full sm:w-auto justify-center px-8 py-3.5 bg-[#2a313b] hover:bg-[#343d4a] text-white rounded-full font-bold text-sm sm:text-base transition-colors flex items-center gap-3 border border-white/5"
               >
-                <FaLinkedin className="text-xl text-slate-300 hover:text-emerald-400 transition-colors" />
-              </a>
-              <a
-                href="https://wa.me/5598970256674?text=Oi%20Antonio%2C%20vim%20pelo%20seu%20portfolio%20e%20gostaria%20de%20conversar."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full bg-slate-800/50 hover:bg-emerald-500/20 flex items-center justify-center transition-all duration-300 hover:scale-110 border border-slate-700/50 hover:border-emerald-400/50"
-              >
-                <FaWhatsapp className="text-xl text-slate-300 hover:text-emerald-400 transition-colors" />
-              </a>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-            >
-              <a
-                href="#about"
-                className="inline-flex px-8 py-4 bg-linear-to-r from-emerald-500 to-cyan-500 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-1"
-              >
-                Conhecer meu trabalho
+                Baixar CV
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                  />
+                </svg>
               </a>
             </motion.div>
           </motion.div>
@@ -142,54 +100,33 @@ export function Hero() {
             initial={{ opacity: 0, x: 20, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="flex justify-center items-center"
+            className="flex justify-center items-center lg:justify-end order-0 lg:order-1 pt-12 lg:pt-0 lg:col-span-5 xl:col-span-5"
           >
-            <div className="relative w-72 h-72 lg:w-96 lg:h-96">
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-full bg-linear-to-br from-emerald-400 via-cyan-400 to-blue-400 opacity-20 blur-3xl"
+            <div className="relative w-full max-w-[280px] sm:max-w-[400px] lg:max-w-[500px] aspect-square flex items-center justify-center">
+              <img
+                src={codeReviewImg}
+                alt="Code Review Illustration"
+                className="w-full h-full object-contain relative z-10"
               />
-
-              <motion.div
-                animate={{ y: [0, -20, 0] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute inset-0 rounded-full bg-linear-to-br from-emerald-400 via-blue-500 to-cyan-500 shadow-2xl flex items-center justify-center overflow-hidden border-2 border-slate-700/30"
-              >
-                <div className="w-64 lg:w-80 h-64 lg:h-80 bg-slate-900 rounded-full flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-6xl lg:text-7xl mb-2 text-white">
-                      AC
-                    </div>
-                    <p className="text-slate-400 text-sm">
-                      Full Stack Developer
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="flex justify-center mt-16"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="text-emerald-400"
-          >
-            <FaChevronDown className="text-2xl" />
-          </motion.div>
-        </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="w-full flex justify-center pb-10 mt-10"
+      >
+        <motion.a
+          href="#about"
+          className="w-14 h-16 bg-[#2a313b] flex items-center justify-center hover:bg-[#343d4a] transition-colors cursor-pointer border border-white/5"
+          whileHover={{ y: 5 }}
+        >
+          <FaArrowDown className="text-slate-400 text-lg" />
+        </motion.a>
+      </motion.div>
     </motion.header>
   );
 }

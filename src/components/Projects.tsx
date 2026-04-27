@@ -4,6 +4,8 @@ import { FaEarthAmericas } from "react-icons/fa6";
 import arenaManagerImg from "../assets/arena-manager.png";
 import aniverlembreImg from "../assets/aniver-lembre.png";
 import apiAudioForceImg from "../assets/audio-force.png";
+import agendaSmileApiImg from "../assets/agenda-smile-api.png";
+import arenaManagerApiImg from "../assets/arena-manager-api.png";
 
 type Project = {
   title: string;
@@ -16,72 +18,118 @@ type Project = {
 };
 
 const techStyles: Record<string, string> = {
-  React: "bg-sky-500/15 text-sky-300 border-sky-500/30",
-  TypeScript: "bg-indigo-500/15 text-indigo-300 border-indigo-500/30",
-  JavaScript: "bg-amber-500/15 text-amber-300 border-amber-500/30",
-  Python: "bg-amber-500/15 text-amber-300 border-amber-500/30",
-  Django: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
-  FastAPI: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
-  Postgres: "bg-blue-500/15 text-blue-300 border-blue-500/30",
-  Prisma: "bg-violet-500/15 text-violet-300 border-violet-500/30",
-  "yt-dlp": "bg-slate-500/15 text-slate-300 border-slate-500/30",
-  FFmpeg: "bg-rose-500/15 text-rose-300 border-rose-500/30",
+  React: "bg-teal-500/10 text-teal-300 border-teal-500/30",
+  TypeScript: "bg-indigo-500/10 text-indigo-300 border-indigo-500/30",
+  JavaScript: "bg-amber-500/10 text-amber-300 border-amber-500/30",
+  Python: "bg-blue-500/10 text-blue-300 border-blue-500/30",
+  Django: "bg-teal-500/10 text-teal-300 border-teal-500/30",
+  "Django REST": "bg-emerald-500/10 text-emerald-300 border-emerald-500/30",
+  FastAPI: "bg-emerald-500/10 text-emerald-300 border-emerald-500/30",
+  Postgres: "bg-sky-500/10 text-sky-300 border-sky-500/30",
+  Docker: "bg-blue-600/10 text-blue-400 border-blue-600/30",
+  HTML: "bg-orange-500/10 text-orange-300 border-orange-500/30",
+  Tailwind: "bg-teal-500/10 text-teal-300 border-teal-500/30",
+  SMTP: "bg-slate-500/10 text-slate-300 border-slate-500/30",
+  Vite: "bg-purple-500/10 text-purple-300 border-purple-500/30",
+  "yt-dlp": "bg-slate-500/10 text-slate-300 border-slate-500/30",
+  FFmpeg: "bg-rose-500/10 text-rose-300 border-rose-500/30",
 };
 
 const getTechClass = (tech: string) =>
-  techStyles[tech] ?? "bg-slate-500/15 text-slate-300 border-slate-500/30";
+  techStyles[tech] ?? "bg-slate-800/50 text-slate-300 border-slate-700/50";
 
 const projects: Project[] = [
   {
-    title: "Arena Manager",
-    subtitle: "Fullstack | API REST + Autenticação",
+    title: "Agenda Smile API",
+    subtitle: "Backend | Django REST Framework",
     description:
-      "Sistema fullstack para gerenciamento de arenas esportivas com autenticação, controle de reservas e regras de negócio. Backend em FastAPI com arquitetura em camadas, integração com PostgreSQL e deploy em cloud.",
-    tech: [
-      "React",
-      "TypeScript",
-      "Python",
-      "FastAPI",
-      "Postgres",
-      "Docker",
-      "JWT",
-      "REST",
+      "Gerenciamento de agendamentos em consultórios odontológicos, permitindo o cadastro de pacientes, dentistas e controle de horários. API completa criada com Django REST Framework.",
+    tech: ["Python", "Django", "Django REST", "Postgres"],
+    image: agendaSmileApiImg,
+    imageAlt: "Tela da API Agenda Smile",
+    links: [
+      { label: "Demo", href: "https://agenda-smile-api.vercel.app/api/docs/" },
+      {
+        label: "Repo",
+        href: "https://github.com/antonioclaudioofc/agenda-smile-api",
+      },
     ],
-    image: arenaManagerImg,
-    imageAlt: "Tela do Arena Manager",
+  },
+  {
+    title: "Aniver Lembre",
+    subtitle: "Fullstack | Django",
+    description:
+      "Sistema web completo para gerenciamento de lembretes de aniversários. Feito com Django, HTML, TailwindCSS e JavaScript, utilizando a stack completa do Django.",
+    tech: ["Python", "Django", "HTML", "Tailwind", "JavaScript"],
+    image: aniverlembreImg,
+    imageAlt: "Tela do Aniver Lembre",
     links: [
       {
-        label: "Repo - Backend",
+        label: "Repo",
+        href: "https://github.com/antonioclaudioofc/aniver_lembre_replace",
+      },
+      { label: "Demo", href: "https://aniver-lembre-web.vercel.app" },
+    ],
+  },
+  {
+    title: "Arena Manager API",
+    subtitle: "Backend | FastAPI",
+    description:
+      "Aplicação desenvolvida em FastAPI com o objetivo de gerenciar arenas esportivas (quadras, campos e áreas recreativas). Feita com Python, FastAPI e toda a sua stack moderna de desenvolvimento backend.",
+    tech: ["Python", "FastAPI", "Postgres", "Docker"],
+    image: arenaManagerApiImg,
+    imageAlt: "Tela da API Arena Manager",
+    links: [
+      {
+        label: "Repo",
         href: "https://github.com/antonioclaudioofc/api_arena_manager",
       },
       {
-        label: "Repo - Frontend",
+        label: "Demo",
+        href: "https://api-arena-manager.vercel.app/docs",
+      },
+    ],
+  },
+  {
+    title: "Notify Me API",
+    subtitle: "Backend | FastAPI",
+    description:
+      "Microserviço desenvolvido em Python com FastAPI para validação e envio de mensagens de contato. Implementa envio assíncrono utilizando SMTP.",
+    tech: ["Python", "FastAPI", "SMTP"],
+    image: apiAudioForceImg,
+    imageAlt: "Tela da API Notify Me",
+    links: [
+      {
+        label: "Repo",
+        href: "https://github.com/antonioclaudioofc/notify-me-api",
+      },
+      {
+        label: "Demo",
+        href: "https://notify-me-dev.vercel.app/docs",
+      },
+    ],
+  },
+  {
+    title: "Arena Manager Web",
+    subtitle: "Frontend | React",
+    description:
+      "Frontend desenvolvido em React, TypeScript e Vite para o sistema de gerenciamento de horários em arenas esportivas.",
+    tech: ["React", "TypeScript", "Vite", "Tailwind"],
+    image: arenaManagerImg,
+    imageAlt: "Tela do Arena Manager Web",
+    links: [
+      {
+        label: "Repo",
         href: "https://github.com/antonioclaudioofc/arena_manager",
       },
       { label: "Demo", href: "https://arena-manager-azure.vercel.app/" },
     ],
   },
   {
-    title: "Aniverlembre",
-    subtitle: "Backend | Django",
-    description:
-      "Sistema backend em Django para gerenciamento de lembretes com autenticação, persistência em PostgreSQL e aplicação de padrões MVC.",
-    tech: ["Python", "Django", "JavaScript", "Postgres"],
-    image: aniverlembreImg,
-    imageAlt: "Tela do Aniverlembre",
-    links: [
-      {
-        label: "Repo",
-        href: "https://github.com/antonioclaudioofc/aniver_lembre_replace",
-      },
-      { label: "Demo", href: "https://aniver-lembre.onrender.com/" },
-    ],
-  },
-  {
     title: "API Audio Force",
     subtitle: "Backend | FastAPI",
     description:
-      "Microserviço em FastAPI para processamento de mídia, download e conversão de vídeos, seguindo arquitetura de serviços independentes.",
+      "API em FastAPI para baixar vídeos ou playlists do YouTube (limitado a 10 itens), gerar um arquivo ZIP e entregá-lo via streaming, removendo automaticamente os arquivos temporários.",
     tech: ["Python", "FastAPI", "yt-dlp", "FFmpeg"],
     image: apiAudioForceImg,
     imageAlt: "Tela da API Audio Force",
@@ -102,67 +150,66 @@ export function Projects() {
   return (
     <motion.section
       id="projects"
-      className="w-full py-20 px-4 bg-slate-800"
+      className="w-full py-24 px-4 bg-[#1e242c] relative border-t border-white/5"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-white">
-            Projetos
-          </h2>
-          <p className="mt-3 text-slate-300">
-            Projetos reais com foco em backend, APIs, arquitetura e sistemas
-            escaláveis.
-          </p>
+      <div className="max-w-7xl mx-auto sm:px-6 lg:px-12">
+        <div className="mb-16">
+          <motion.h2
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="font-extrabold tracking-wider text-5xl sm:text-6xl md:text-[4rem] lg:text-[4.5rem] leading-none"
+          >
+            <span className="text-white">Projetos </span>
+            <span className="text-teal-500">recentes</span>
+          </motion.h2>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((p, i) => (
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {projects.slice(0, 6).map((p, i) => (
             <motion.article
-              key={p.title}
-              className="rounded-2xl overflow-hidden bg-slate-900/60 border border-slate-700/60 hover:border-cyan-400/40 hover:shadow-xl hover:shadow-cyan-900/40 transition-all"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.08 * i }}
+              key={i}
+              className="flex flex-col rounded-md overflow-hidden bg-[#242b35] border border-white/5 hover:border-teal-500/30 group transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 * i, duration: 0.5 }}
             >
-              <div className="w-full aspect-video bg-linear-to-br from-slate-900 via-slate-800 to-slate-700">
+              <div className="w-full aspect-video relative overflow-hidden bg-[#1e242c]">
                 <img
                   src={p.image}
                   alt={p.imageAlt}
-                  className="w-full h-full object-center "
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#242b35] via-transparent to-transparent opacity-90" />
               </div>
 
-              <div className="p-6">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="text-xl font-semibold text-white">
-                      {p.title}
-                    </h3>
-                    {p.subtitle && (
-                      <p className="text-sm text-cyan-300 mt-1">{p.subtitle}</p>
-                    )}
-                  </div>
-
-                  <span className="text-xs px-2 py-1 bg-slate-800/80 rounded text-slate-200">
-                    {p.tech[0]}
-                  </span>
+              <div className="p-8 pt-4 flex flex-col flex-1 relative z-10">
+                <div className="mb-4">
+                  <h3 className="text-2xl font-bold text-white mb-1">
+                    {p.title}
+                  </h3>
+                  {p.subtitle && (
+                    <p className="text-sm text-teal-400 font-semibold">
+                      {p.subtitle}
+                    </p>
+                  )}
                 </div>
 
-                <p className="mt-4 text-slate-300 text-sm leading-6">
+                <p className="text-slate-400 text-sm flex-1 leading-relaxed mb-6">
                   {p.description}
                 </p>
 
-                <div className="mt-5 flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-8">
                   {p.tech.map((t) => (
                     <span
                       key={t}
-                      className={`text-xs px-2.5 py-1 rounded border ${getTechClass(
-                        t,
-                      )}`}
+                      className={`text-xs px-3 py-1.5 rounded border font-medium ${getTechClass(t)}`}
                     >
                       {t}
                     </span>
@@ -170,7 +217,7 @@ export function Projects() {
                 </div>
 
                 {p.links && (
-                  <div className="mt-6 flex flex-wrap gap-3 items-center">
+                  <div className="flex flex-wrap gap-3 mt-auto">
                     {p.links.map((l) => {
                       const isRepo = l.label.toLowerCase().includes("repo");
                       const isDemo = l.label.toLowerCase().includes("demo");
@@ -181,14 +228,14 @@ export function Projects() {
                           href={l.href}
                           target="_blank"
                           rel="noreferrer"
-                          className="flex items-center gap-2 text-sm px-3 py-2 bg-slate-900/40 hover:bg-slate-600/60 text-white rounded-md transition-colors"
+                          className={`flex-1 flex justify-center items-center gap-2 text-sm px-4 py-3 rounded-md font-bold transition-all ${
+                            isDemo
+                              ? "bg-teal-500 hover:bg-teal-400 text-white shadow-sm hover:-translate-y-0.5"
+                              : "bg-[#1e242c] hover:bg-[#2a323c] text-white border border-white/5 hover:-translate-y-0.5"
+                          }`}
                         >
-                          {isRepo && <FaGithub />}
-
-                          {isDemo && (
-                            <FaEarthAmericas className="text-green-700" />
-                          )}
-
+                          {isRepo && <FaGithub className="text-lg" />}
+                          {isDemo && <FaEarthAmericas className="text-lg" />}
                           <span>{l.label}</span>
                         </a>
                       );
