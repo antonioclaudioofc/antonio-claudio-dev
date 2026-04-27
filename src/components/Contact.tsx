@@ -106,20 +106,20 @@ export function Contact() {
 
   return (
     <motion.section
-      className="w-full py-20 px-4 bg-slate-900"
+      className="w-full py-24 px-4 bg-[#1e242c]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-white">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl sm:text-5xl font-bold text-white">
             Entrar em contato
           </h2>
-          <p className="mt-3 text-slate-300">
+          <p className="mt-4 text-slate-400">
             Respondo normalmente em até 24 horas.
           </p>
-          <p className="mt-3 text-slate-300">
+          <p className="mt-2 text-slate-400">
             Aberto a oportunidades como Desenvolvedor Full Stack / Backend
             Python.
           </p>
@@ -127,7 +127,7 @@ export function Contact() {
 
         <div className="grid gap-8 lg:grid-cols-2">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white">Fale comigo</h3>
+            <h3 className="text-xl font-bold text-white">Fale comigo</h3>
 
             {contactCards.map((card) => {
               const Icon = card.icon;
@@ -138,84 +138,84 @@ export function Contact() {
                   href={card.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex items-center gap-4 rounded-xl border border-slate-700/60 bg-slate-900/70 px-4 py-4 transition-all hover:border-emerald-400/40 hover:shadow-lg hover:shadow-emerald-900/30"
+                  className="group flex items-center gap-4 rounded-xl border border-slate-700/50 bg-[#242b35] px-4 py-4 transition-all hover:border-teal-500/50 hover:shadow-md hover:shadow-teal-500/10"
                 >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-800/70 text-emerald-300 group-hover:bg-emerald-500/20">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-800 text-teal-400 group-hover:bg-teal-500/20 transition-colors">
                     <Icon className="text-xl" />
                   </span>
                   <div>
                     <p className="text-sm text-slate-400">{card.title}</p>
-                    <p className="text-base text-white">{card.value}</p>
+                    <p className="text-base font-medium text-white">{card.value}</p>
                   </div>
                 </a>
               );
             })}
-            <p className="mt-3 text-green-300">
+            <p className="mt-3 text-teal-400 font-medium">
               Disponível para trabalho remoto ou presencial.
             </p>
           </div>
 
           <form
-            className="rounded-2xl border border-slate-700/60 bg-slate-900/70 p-6"
+            className="rounded-2xl border border-slate-700/50 bg-[#242b35] shadow-sm p-6"
             onSubmit={handleSubmit}
           >
-            <h3 className="text-lg font-semibold text-white mb-4">
-              Fale comigo sobre oportunidades
+            <h3 className="text-xl font-bold text-white mb-6">
+              Envie uma mensagem
             </h3>
 
             <div className="space-y-4">
               <label className="block">
-                <span className="text-sm text-slate-400">Seu nome</span>
+                <span className="text-sm font-medium text-slate-300">Seu nome</span>
                 <input
                   type="text"
                   name="name"
                   placeholder="Digite seu nome"
                   value={formValues.name}
                   onChange={handleChange}
-                  className="mt-2 w-full rounded-lg border border-slate-700/60  px-4 py-2 text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none bg-gray-600/60"
+                  className="mt-2 w-full rounded-lg border border-slate-700 px-4 py-3 text-white placeholder:text-slate-500 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 focus:outline-none bg-slate-800"
                 />
               </label>
 
               <label className="block">
-                <span className="text-sm text-slate-400">Seu e-mail</span>
+                <span className="text-sm font-medium text-slate-300">Seu e-mail</span>
                 <input
                   type="email"
                   name="email"
                   placeholder="Digite seu e-mail"
                   value={formValues.email}
                   onChange={handleChange}
-                  className="mt-2 w-full rounded-lg border border-slate-700/60 bg-gray-600/60 px-4 py-2 text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
+                  className="mt-2 w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-white placeholder:text-slate-500 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 focus:outline-none"
                 />
               </label>
 
               <label className="block">
-                <span className="text-sm text-slate-400">Mensagem</span>
+                <span className="text-sm font-medium text-slate-300">Mensagem</span>
                 <textarea
                   name="message"
                   rows={5}
                   placeholder="Escreva sua mensagem aqui"
                   value={formValues.message}
                   onChange={handleChange}
-                  className="mt-2 w-full rounded-lg border border-slate-700/60 bg-gray-600/60 px-4 py-2 text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
+                  className="mt-2 w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-white placeholder:text-slate-500 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 focus:outline-none resize-y"
                 />
               </label>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="inline-flex items-center justify-center rounded-lg bg-linear-to-r from-emerald-500 to-cyan-500 px-6 py-2 text-white font-semibold transition-all hover:shadow-lg hover:shadow-emerald-500/25 disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex w-full sm:w-auto items-center justify-center rounded-lg bg-teal-500 px-8 py-3 text-white font-semibold transition-all hover:shadow-lg hover:bg-teal-400 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {isSubmitting ? "Enviando..." : "Enviar"}
               </button>
 
               {status === "success" && (
-                <p className="text-sm text-emerald-300">
+                <p className="text-sm font-medium text-emerald-600">
                   Mensagem enviada! Vou retornar em breve.
                 </p>
               )}
 
               {status === "error" && (
-                <p className="text-sm text-rose-300">{errorMessage}</p>
+                <p className="text-sm font-medium text-rose-600">{errorMessage}</p>
               )}
             </div>
           </form>

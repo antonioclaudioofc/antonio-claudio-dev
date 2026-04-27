@@ -9,7 +9,7 @@ import { ScrollToTop } from "./components/ScrollToTop";
 
 export default function App() {
   return (
-    <main className="w-full">
+    <main className="w-full bg-[#1e242c] text-white">
       <Navbar />
 
       <section id="home">

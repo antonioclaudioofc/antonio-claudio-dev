@@ -17,22 +17,22 @@ export function Skills() {
     { label: "Next.js", icon: SiNextdotjs, colorClass: "text-white" },
     { label: "TypeScript", icon: SiTypescript, colorClass: "text-sky-400" },
     { label: "JavaScript", icon: SiJavascript, colorClass: "text-yellow-300" },
-    { label: "React", icon: SiReact, colorClass: "text-cyan-300" },
-    { label: "Tailwind", icon: SiTailwindcss, colorClass: "text-cyan-400" },
+    { label: "React", icon: SiReact, colorClass: "text-cyan-400" },
+    { label: "Tailwind", icon: SiTailwindcss, colorClass: "text-teal-400" },
   ];
 
   const backEnd = [
     { label: "Python", icon: SiPython, colorClass: "text-blue-400" },
-    { label: "Django", icon: SiDjango, colorClass: "text-emerald-400" },
+    { label: "Django", icon: SiDjango, colorClass: "text-teal-500" },
     { label: "PostgreSQL", icon: SiPostgresql, colorClass: "text-sky-300" },
     { label: "Firebase", icon: IoLogoFirebase, colorClass: "text-yellow-400" },
-    { label: "Neon", icon: FaDatabase, colorClass: "text-cyan-300" },
+    { label: "Neon", icon: FaDatabase, colorClass: "text-teal-300" },
   ];
 
   return (
     <motion.section
       id="skills"
-      className="w-full py-24 bg-linear-to-br from-slate-950 via-blue-950 to-slate-950 px-4"
+      className="w-full py-24 bg-[#1e242c] px-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
@@ -50,9 +50,9 @@ export function Skills() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="rounded-3xl border border-slate-700/50 bg-slate-900/50 px-6 py-8"
+            className="rounded-3xl border border-slate-700/50 bg-[#242b35] px-6 py-8"
           >
-            <div className="flex items-center justify-center gap-2 text-slate-200 font-semibold mb-6">
+            <div className="flex items-center justify-center gap-2 text-white font-bold mb-6">
               Front-end
             </div>
             <div className="flex flex-wrap items-center justify-center gap-6">
@@ -72,9 +72,9 @@ export function Skills() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="rounded-3xl border border-slate-700/50 bg-slate-900/50 px-6 py-8"
+            className="rounded-3xl border border-slate-700/50 bg-[#242b35] px-6 py-8"
           >
-            <div className="flex items-center justify-center gap-2 text-slate-200 font-semibold mb-6">
+            <div className="flex items-center justify-center gap-2 text-white font-bold mb-6">
               Back-end
             </div>
             <div className="flex flex-wrap items-center justify-center gap-6">
