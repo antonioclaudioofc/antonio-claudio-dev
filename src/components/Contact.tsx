@@ -145,7 +145,9 @@ export function Contact() {
                   </span>
                   <div>
                     <p className="text-sm text-slate-400">{card.title}</p>
-                    <p className="text-base font-medium text-white">{card.value}</p>
+                    <p className="text-base font-medium text-white">
+                      {card.value}
+                    </p>
                   </div>
                 </a>
               );
@@ -165,7 +167,9 @@ export function Contact() {
 
             <div className="space-y-4">
               <label className="block">
-                <span className="text-sm font-medium text-slate-300">Seu nome</span>
+                <span className="text-sm font-medium text-slate-300">
+                  Seu nome
+                </span>
                 <input
                   type="text"
                   name="name"
@@ -177,7 +181,9 @@ export function Contact() {
               </label>
 
               <label className="block">
-                <span className="text-sm font-medium text-slate-300">Seu e-mail</span>
+                <span className="text-sm font-medium text-slate-300">
+                  Seu e-mail
+                </span>
                 <input
                   type="email"
                   name="email"
@@ -189,7 +195,9 @@ export function Contact() {
               </label>
 
               <label className="block">
-                <span className="text-sm font-medium text-slate-300">Mensagem</span>
+                <span className="text-sm font-medium text-slate-300">
+                  Mensagem
+                </span>
                 <textarea
                   name="message"
                   rows={5}
@@ -215,7 +223,9 @@ export function Contact() {
               )}
 
               {status === "error" && (
-                <p className="text-sm font-medium text-rose-600">{errorMessage}</p>
+                <p className="text-sm font-medium text-rose-600">
+                  {errorMessage}
+                </p>
               )}
             </div>
           </form>
