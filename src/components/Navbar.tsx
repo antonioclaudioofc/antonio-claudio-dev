@@ -72,7 +72,7 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            {navItems.map((item, index) => {
+            {navItems.map((item) => {
               const sectionId = item.href.substring(1);
               const isActive = activeSection === sectionId;
 
