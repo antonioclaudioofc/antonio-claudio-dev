@@ -223,7 +223,7 @@ export function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto mt-4 inline-flex items-center justify-center rounded-md bg-teal-500 px-8 py-3.5 text-white font-bold transition-all hover:bg-teal-400 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="w-full sm:w-auto mt-4 inline-flex items-center justify-center rounded-md bg-teal-500 px-8 py-3.5 text-white font-bold transition-all hover:bg-teal-400 disabled:cursor-not-allowed disabled:opacity-60 cursor-pointer"
                 >
                   {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
                 </button>

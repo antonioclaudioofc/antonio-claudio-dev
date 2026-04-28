@@ -14,7 +14,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/notify-api": {
-        target: process.env.VITE_NOTIFY_API_URL || "https://notify-me-dev.vercel.app",
+        target: "https://notify-me-dev.vercel.app",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/notify-api/, ""),
       },
