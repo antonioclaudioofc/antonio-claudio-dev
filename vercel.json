@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/notify-api/(.*)",
+      "destination": "https://notify-me-dev.vercel.app/$1"
+    }
+  ]
+}

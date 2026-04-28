@@ -72,8 +72,7 @@ export function Contact() {
     setIsSubmitting(true);
 
     try {
-      const API_URL =
-        "https://notify-me-dev.vercel.app/api/antonio-claudio-dev/contact";
+      const API_URL = "/notify-api/api/antonio-claudio-dev/contact";
 
       const response = await fetch(API_URL, {
         method: "POST",
