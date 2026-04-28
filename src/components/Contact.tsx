@@ -72,21 +72,21 @@ export function Contact() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(
-        "/notify-api/api/antonio-claudio-dev/contact",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-API-Key": import.meta.env.VITE_NOTIFY_API_KEY,
-          },
-          body: JSON.stringify({
-            name: formValues.name.trim(),
-            email: formValues.email.trim(),
-            message: formValues.message.trim(),
-          }),
+      const API_URL =
+        "https://notify-me-dev.vercel.app/api/antonio-claudio-dev/contact";
+
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-Key": import.meta.env.VITE_NOTIFY_API_KEY,
         },
-      );
+        body: JSON.stringify({
+          name: formValues.name.trim(),
+          email: formValues.email.trim(),
+          message: formValues.message.trim(),
+        }),
+      });
 
       if (!response.ok) {
         throw new Error("Erro ao enviar mensagem. Tente novamente.");
