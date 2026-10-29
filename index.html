@@ -1,47 +1,49 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="icon" type="image/svg+xml" href="/ac-icon-app.svg" />
+    <link rel="apple-touch-icon" href="/ac-icon-app.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/src/index.css" />
-    <meta name="theme-color" content="#1e242c" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111214" media="(prefers-color-scheme: dark)" />
     <script>
       (function () {
+        var lang = null;
+        var theme = null;
         try {
-          var stored = localStorage.getItem("theme");
-          if (stored === "light") {
-            document.documentElement.setAttribute("data-theme", "light");
-          }
+          lang = localStorage.getItem("ac-lang");
+          theme = localStorage.getItem("ac-theme");
         } catch (e) {}
+        if (lang !== "pt" && lang !== "en") {
+          lang = (navigator.language || "").toLowerCase().indexOf("en") === 0 ? "en" : "pt";
+        }
+        if (theme !== "light" && theme !== "dark") {
+          theme =
+            window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        }
+        document.documentElement.lang = lang === "en" ? "en" : "pt-BR";
+        if (theme === "dark") document.documentElement.classList.add("dark");
       })();
     </script>
 
-    <title>
-      Antonio Claudio | Desenvolvedor Full Stack Java, React & Python
-    </title>
+    <title>Antonio Claudio — Portfólio</title>
     <meta
       name="description"
-      content="Antonio Claudio é um Desenvolvedor Full Stack especializado em Java, Spring Boot, Angular, React, React Native e Python (Django/FastAPI). Confira minha experiência, projetos e entre em contato."
-    />
-    <meta
-      name="keywords"
-      content="Antonio Claudio, Antonio Claudio desenvolvedor, Antonio Claudio full stack, desenvolvedor full stack, Java, Spring Boot, Angular, React, React Native, Django, FastAPI, Python, TypeScript, portfólio"
+      content="Desenvolvedor backend, formado em Ciência da Computação pelo IFMA. Trabalho com Java e Spring Boot, NestJS e Python, e também com Angular e React."
     />
     <meta name="author" content="Antonio Claudio" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://antonioclaudio.dev/" />
 
     <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="Antonio Claudio | Desenvolvedor Full Stack"
-    />
+    <meta property="og:title" content="Antonio Claudio — Portfólio" />
     <meta
       property="og:description"
-      content="Especialista em Java, Spring Boot, Angular, React e Python. Transformando ideias em soluções robustas."
+      content="Desenvolvedor backend, formado em Ciência da Computação pelo IFMA. Trabalho com Java e Spring Boot, NestJS e Python, e também com Angular e React."
     />
-    <meta property="og:image" content="/og-image.png" />
     <meta property="og:url" content="https://antonioclaudio.dev/" />
 
     <script type="application/ld+json">
@@ -49,19 +51,19 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Antonio Claudio",
-        "jobTitle": "Desenvolvedor Full Stack",
+        "jobTitle": "Desenvolvedor Backend",
         "url": "https://antonioclaudio.dev/",
         "sameAs": [
           "https://github.com/antonioclaudioofc",
           "https://www.linkedin.com/in/antonioclaudioofc/"
         ],
-        "description": "Desenvolvedor Full Stack com foco em Java, Spring Boot, Angular, React e Python.",
+        "description": "Desenvolvedor backend com Java, Spring Boot, NestJS e Python, e experiência com Angular e React.",
         "knowsAbout": [
           "Java",
           "Spring Boot",
+          "NestJS",
           "Angular",
           "React",
-          "React Native",
           "Django",
           "FastAPI",
           "Python",

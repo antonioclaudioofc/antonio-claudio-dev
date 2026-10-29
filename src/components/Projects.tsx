@@ -1,293 +1,118 @@
-import { motion } from "motion/react";
-import { FaGithub, FaCode } from "react-icons/fa";
-import { FaEarthAmericas } from "react-icons/fa6";
-import arenaManagerImg from "../assets/arena-manager.png";
-import aniverlembreImg from "../assets/aniver-lembre.png";
-import agendaSmileApiImg from "../assets/agenda-smile-api.png";
-import arenaManagerApiImg from "../assets/arena-manager-api.png";
+import { usePrefs } from "../prefsContext";
+import type { Copy } from "../prefsContext";
+import data from "../content/projects.json";
 
-type Project = {
-  title: string;
-  subtitle?: string;
-  description: string;
-  tech: string[];
-  image?: string;
-  imageAlt: string;
-  links?: { label: string; href: string }[];
-};
+type Project = (typeof data.projects)[number];
 
-const techStyles: Record<string, string> = {
-  React: "bg-teal-500/10 text-teal-300 border-teal-500/30",
-  "Next.js": "bg-slate-500/10 text-slate-200 border-slate-500/30",
-  TypeScript: "bg-indigo-500/10 text-indigo-300 border-indigo-500/30",
-  JavaScript: "bg-amber-500/10 text-amber-300 border-amber-500/30",
-  Python: "bg-blue-500/10 text-blue-300 border-blue-500/30",
-  Django: "bg-teal-500/10 text-teal-300 border-teal-500/30",
-  "Django REST": "bg-emerald-500/10 text-emerald-300 border-emerald-500/30",
-  FastAPI: "bg-emerald-500/10 text-emerald-300 border-emerald-500/30",
-  Postgres: "bg-sky-500/10 text-sky-300 border-sky-500/30",
-  Docker: "bg-blue-600/10 text-blue-400 border-blue-600/30",
-  HTML: "bg-orange-500/10 text-orange-300 border-orange-500/30",
-  Tailwind: "bg-teal-500/10 text-teal-300 border-teal-500/30",
-  Vite: "bg-purple-500/10 text-purple-300 border-purple-500/30",
-  Flutter: "bg-sky-500/10 text-sky-300 border-sky-500/30",
-  Firebase: "bg-yellow-500/10 text-yellow-300 border-yellow-500/30",
-};
+const str = (t: Copy, key: string) => (t as Record<string, string>)[key];
+const src = (file: string) => `/screenshots/${file.split("/").pop()}`;
 
-const getTechClass = (tech: string) =>
-  techStyles[tech] ?? "bg-slate-800/50 text-slate-300 border-slate-700/50";
+function Stack({ stack }: { stack: Project["stack"] }) {
+  if (Array.isArray(stack)) {
+    return (
+      <ul className="tg">
+        {stack.map((s) => (
+          <li key={s}>{s}</li>
+        ))}
+      </ul>
+    );
+  }
+  return (
+    <>
+      {Object.entries(stack).map(([label, items]) => (
+        <ul className="tg" key={label}>
+          <li className="tgl">{label}</li>
+          {(items as string[]).map((s) => (
+            <li key={s}>{s}</li>
+          ))}
+        </ul>
+      ))}
+    </>
+  );
+}
 
-const projects: Project[] = [
-  {
-    title: "CONNTEC",
-    subtitle: "Fullstack | Flutter & Next.js",
-    description:
-      "Plataforma de automação contábil voltada para instituições públicas, unificando app mobile e painel web para simplificar processos de gestão contábil.",
-    tech: ["Flutter", "Next.js", "Firebase", "TypeScript"],
-    imageAlt: "Projeto CONNTEC",
-    links: [{ label: "Repo", href: "https://github.com/conntec" }],
-  },
-  {
-    title: "Sisteminha Comunidades",
-    subtitle: "Fullstack | Next.js & React",
-    description:
-      "Plataforma criada para apoiar comunidades tradicionais em projetos de segurança alimentar, centralizando cadastro e acompanhamento de informações.",
-    tech: ["Next.js", "React", "TypeScript", "Firebase"],
-    imageAlt: "Projeto Sisteminha Comunidades",
-    links: [
-      { label: "Demo", href: "https://sisteminha-comunidades.vercel.app" },
-    ],
-  },
-  {
-    title: "Agenda Smile API",
-    subtitle: "Backend | Django REST Framework",
-    description:
-      "Gerenciamento de agendamentos em consultórios odontológicos, permitindo o cadastro de pacientes, dentistas e controle de horários. API completa criada com Django REST Framework.",
-    tech: ["Python", "Django", "Django REST", "Postgres"],
-    image: agendaSmileApiImg,
-    imageAlt: "Tela da API Agenda Smile",
-    links: [
-      { label: "Demo", href: "https://agenda-smile-api.vercel.app/api/docs/" },
-      {
-        label: "Repo",
-        href: "https://github.com/antonioclaudioofc/agenda-smile-api",
-      },
-    ],
-  },
-  {
-    title: "Aniver Lembre",
-    subtitle: "Fullstack | Django",
-    description:
-      "Sistema web completo para gerenciamento de lembretes de aniversários. Feito com Django, HTML, TailwindCSS e JavaScript, utilizando a stack completa do Django.",
-    tech: ["Python", "Django", "HTML", "Tailwind", "JavaScript"],
-    image: aniverlembreImg,
-    imageAlt: "Tela do Aniver Lembre",
-    links: [
-      {
-        label: "Repo",
-        href: "https://github.com/antonioclaudioofc/aniver_lembre_replace",
-      },
-      { label: "Demo", href: "https://aniver-lembre-web.vercel.app" },
-    ],
-  },
-  {
-    title: "Arena Manager API",
-    subtitle: "Backend | FastAPI",
-    description:
-      "Aplicação desenvolvida em FastAPI com o objetivo de gerenciar arenas esportivas (quadras, campos e áreas recreativas). Feita com Python, FastAPI e toda a sua stack moderna de desenvolvimento backend.",
-    tech: ["Python", "FastAPI", "Postgres", "Docker"],
-    image: arenaManagerApiImg,
-    imageAlt: "Tela da API Arena Manager",
-    links: [
-      {
-        label: "Repo",
-        href: "https://github.com/antonioclaudioofc/api_arena_manager",
-      },
-      {
-        label: "Demo",
-        href: "https://api-arena-manager.vercel.app/docs",
-      },
-    ],
-  },
-  {
-    title: "Arena Manager Web",
-    subtitle: "Frontend | React",
-    description:
-      "Frontend desenvolvido em React, TypeScript e Vite para o sistema de gerenciamento de horários em arenas esportivas.",
-    tech: ["React", "TypeScript", "Vite", "Tailwind"],
-    image: arenaManagerImg,
-    imageAlt: "Tela do Arena Manager Web",
-    links: [
-      {
-        label: "Repo",
-        href: "https://github.com/antonioclaudioofc/arena_manager",
-      },
-      { label: "Demo", href: "https://arena-manager-azure.vercel.app/" },
-    ],
-  },
-];
+function Links({ project, t }: { project: Project; t: Copy }) {
+  return (
+    <p className="plinks">
+      {(project.links as string[][]).map(([key, href]) => (
+        <a key={href} href={href} target="_blank" rel="noopener noreferrer">
+          {str(t, key)}
+        </a>
+      ))}
+    </p>
+  );
+}
+
+function Article({ project, t, lazy }: { project: Project; t: Copy; lazy: boolean }) {
+  const main = project.featured;
+  const images = project.images as { file: string; captionKey: string; altKey: string }[];
+  const many = images.length > 1;
+  return (
+    <article style={{ display: "flex", flexDirection: "column", gap: main ? 6 : 4 }}>
+      <h3
+        style={
+          main
+            ? { fontSize: 22, lineHeight: 1.3, fontWeight: 600, letterSpacing: "-.015em" }
+            : { fontSize: 17, lineHeight: 1.4, fontWeight: 600 }
+        }
+      >
+        {project.name}
+      </h3>
+      <Stack stack={project.stack} />
+      <p style={{ marginTop: main ? 6 : 4, maxWidth: "36em" }}>{str(t, project.descKey)}</p>
+      {images.length > 0 && (
+        <div
+          style={{
+            marginTop: main ? 14 : 12,
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 20,
+            maxWidth: main ? undefined : 480,
+          }}
+        >
+          {images.map((img) => (
+            <figure key={img.file} style={{ flex: many ? "1 1 280px" : "1 1 100%", minWidth: 0 }}>
+              <img
+                className="shot"
+                src={src(img.file)}
+                alt={str(t, img.altKey)}
+                loading={lazy ? "lazy" : undefined}
+              />
+              <figcaption className="cap">{str(t, img.captionKey)}</figcaption>
+            </figure>
+          ))}
+        </div>
+      )}
+      <Links project={project} t={t} />
+    </article>
+  );
+}
 
 export function Projects() {
+  const { t } = usePrefs();
+  const featured = data.projects.filter((p) => p.featured);
+  const others = data.projects.filter((p) => !p.featured);
   return (
-    <motion.section
-      id="projects"
-      className="w-full py-24 px-4 relative border-t"
-      style={{
-        backgroundColor: "var(--color-bg)",
-        borderColor: "var(--color-border)",
-      }}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="max-w-7xl mx-auto sm:px-6 lg:px-12">
-        <div className="mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="font-heading font-bold tracking-tight text-5xl sm:text-6xl md:text-[4rem] lg:text-[4.5rem] leading-none"
-          >
-            <span style={{ color: "var(--color-text)" }}>Projetos </span>
-            <span style={{ color: "var(--color-accent)" }}>recentes</span>
-          </motion.h2>
-        </div>
-
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((p, i) => (
-            <motion.article
-              key={p.title}
-              className="flex flex-col rounded-md overflow-hidden border group transition-all duration-300 hover:-translate-y-1"
-              style={{
-                backgroundColor: "var(--color-bg-alt)",
-                borderColor: "var(--color-border)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor =
-                  "var(--color-accent-border)";
-                e.currentTarget.style.boxShadow =
-                  "0 12px 30px -12px var(--color-accent-soft)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "var(--color-border)";
-                e.currentTarget.style.boxShadow = "none";
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.06 * i, duration: 0.4 }}
-            >
-              <div
-                className="w-full aspect-video relative overflow-hidden"
-                style={{ backgroundColor: "var(--color-bg)" }}
-              >
-                {p.image ? (
-                  <img
-                    src={p.image}
-                    alt={p.imageAlt}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                ) : (
-                  <div
-                    className="w-full h-full flex items-center justify-center"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, var(--color-bg-elevated), var(--color-bg))",
-                    }}
-                  >
-                    <FaCode
-                      className="text-5xl transition-transform duration-500 group-hover:scale-110"
-                      style={{ color: "var(--color-accent)" }}
-                      aria-label={p.imageAlt}
-                    />
-                  </div>
-                )}
-                <div
-                  className="absolute inset-0 opacity-90"
-                  style={{
-                    background:
-                      "linear-gradient(to top, var(--color-bg-alt), transparent 60%)",
-                  }}
-                />
-              </div>
-
-              <div className="p-8 pt-4 flex flex-col flex-1 relative z-10">
-                <div className="mb-4">
-                  <h3
-                    className="text-2xl font-bold mb-1"
-                    style={{ color: "var(--color-text)" }}
-                  >
-                    {p.title}
-                  </h3>
-                  {p.subtitle && (
-                    <p
-                      className="text-sm font-semibold"
-                      style={{ color: "var(--color-accent)" }}
-                    >
-                      {p.subtitle}
-                    </p>
-                  )}
-                </div>
-
-                <p
-                  className="text-sm flex-1 leading-relaxed mb-6"
-                  style={{ color: "var(--color-text-muted)" }}
-                >
-                  {p.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {p.tech.map((t) => (
-                    <span
-                      key={t}
-                      className={`text-xs px-3 py-1.5 rounded border font-medium ${getTechClass(t)}`}
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                {p.links && (
-                  <div className="flex flex-wrap gap-3 mt-auto">
-                    {p.links.map((l) => {
-                      const isRepo = l.label.toLowerCase().includes("repo");
-                      const isDemo = l.label.toLowerCase().includes("demo");
-
-                      return (
-                        <a
-                          key={l.label}
-                          href={l.href}
-                          target="_blank"
-                          rel="noreferrer"
-                          className={`flex-1 flex justify-center items-center gap-2 text-sm px-4 py-3 rounded-md font-bold transition-all duration-200 hover:-translate-y-0.5 ${isDemo ? "btn-accent" : ""}`}
-                          style={
-                            isDemo
-                              ? undefined
-                              : {
-                                  backgroundColor: "var(--color-bg)",
-                                  color: "var(--color-text)",
-                                  borderWidth: 1,
-                                  borderStyle: "solid",
-                                  borderColor: "var(--color-border)",
-                                }
-                          }
-                        >
-                          {isRepo && <FaGithub className="text-lg" />}
-                          {isDemo && <FaEarthAmericas className="text-lg" />}
-                          <span>{l.label}</span>
-                        </a>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            </motion.article>
+    <section id="projects" className="sec">
+      <h2 className="lb">{t.projects}</h2>
+      <div className="ct" style={{ display: "flex", flexDirection: "column", gap: 64 }}>
+        {featured.map((p, i) => (
+          <Article key={p.id} project={p} t={t} lazy={i > 0} />
+        ))}
+        <div
+          style={{
+            borderTop: "1px solid var(--line)",
+            paddingTop: 40,
+            display: "flex",
+            flexDirection: "column",
+            gap: 44,
+          }}
+        >
+          {others.map((p) => (
+            <Article key={p.id} project={p} t={t} lazy />
           ))}
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

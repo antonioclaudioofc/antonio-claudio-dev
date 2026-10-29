@@ -1,0 +1,43 @@
+{
+  "name": "Antonio Claudio Teixeira Alves",
+  "contact": {
+    "email": "claudioalvesdev@gmail.com",
+    "whatsapp": "https://wa.me/5598970256674",
+    "phone": "(98) 97025-6674",
+    "linkedin": "https://www.linkedin.com/in/antonioclaudioofc/",
+    "github": "https://github.com/antonioclaudioofc",
+    "site": "https://antonio-claudio-dev.vercel.app/"
+  },
+  "experience": [
+    {
+      "company": "Pass",
+      "role": "Desenvolvedor Backend",
+      "period": "Set/2026 – atual",
+      "mode": "Tempo integral · Remoto"
+    },
+    {
+      "company": "Medsafe Brasil",
+      "role": "Desenvolvedor de Software Júnior",
+      "period": "Mai/2026 – Ago/2026",
+      "mode": "Presencial · Teresina, PI"
+    },
+    {
+      "company": "IVC Tecnologia",
+      "role": "Estagiário de Desenvolvimento Web",
+      "period": "Abr/2024 – Set/2024",
+      "mode": "Remoto"
+    }
+  ],
+  "education": [
+    {
+      "course": "Bacharelado em Ciência da Computação",
+      "institution": "IFMA",
+      "period": "2021–2025"
+    },
+    {
+      "course": "Sistemas Embarcados (formação complementar)",
+      "institution": "IFMA, Campus Monte Castelo",
+      "period": "2024–2026"
+    }
+  ]
+}

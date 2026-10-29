@@ -1,0 +1,157 @@
+{
+  "note": "labelKey/descKey/captionKey/altKey apontam para chaves de copy.json (pt e en). Nomes de projeto e tecnologias não são traduzidos.",
+  "projects": [
+    {
+      "id": "arena-manager",
+      "name": "Arena Manager",
+      "featured": true,
+      "stack": {
+        "API": [
+          "FastAPI",
+          "PostgreSQL",
+          "Docker"
+        ],
+        "Web": [
+          "React",
+          "TypeScript",
+          "Vite",
+          "Tailwind"
+        ]
+      },
+      "images": [
+        {
+          "file": "assets/screenshots/arena-manager-web.png",
+          "captionKey": "arenaCap1",
+          "altKey": "arenaAlt1"
+        },
+        {
+          "file": "assets/screenshots/arena-manager-api.png",
+          "captionKey": "arenaCap2",
+          "altKey": "arenaAlt2"
+        }
+      ],
+      "descKey": "arenaDesc",
+      "links": [
+        [
+          "webDemo",
+          "https://arena-manager-azure.vercel.app/"
+        ],
+        [
+          "webRepo",
+          "https://github.com/antonioclaudioofc/arena_manager"
+        ],
+        [
+          "apiDocs",
+          "https://api-arena-manager.vercel.app/docs"
+        ],
+        [
+          "apiRepo",
+          "https://github.com/antonioclaudioofc/api_arena_manager"
+        ]
+      ]
+    },
+    {
+      "id": "agenda-smile-api",
+      "name": "Agenda Smile API",
+      "featured": true,
+      "stack": [
+        "Python",
+        "Django REST Framework",
+        "PostgreSQL"
+      ],
+      "images": [
+        {
+          "file": "assets/screenshots/agenda-smile-api.png",
+          "captionKey": "agCap",
+          "altKey": "agAlt"
+        }
+      ],
+      "descKey": "agDesc",
+      "links": [
+        [
+          "docs",
+          "https://agenda-smile-api.vercel.app/api/docs/"
+        ],
+        [
+          "repo",
+          "https://github.com/antonioclaudioofc/agenda-smile-api"
+        ]
+      ]
+    },
+    {
+      "id": "conntec",
+      "name": "CONNTEC",
+      "featured": true,
+      "stack": [
+        "Flutter",
+        "Next.js",
+        "Firebase",
+        "TypeScript"
+      ],
+      "images": [],
+      "descKey": "conDesc",
+      "links": [
+        [
+          "conLink",
+          "https://github.com/conntec"
+        ]
+      ],
+      "note": "Sem imagem: nenhuma demo pública encontrada."
+    },
+    {
+      "id": "sisteminha-comunidades",
+      "name": "Sisteminha Comunidades",
+      "featured": false,
+      "stack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Firebase"
+      ],
+      "images": [
+        {
+          "file": "assets/screenshots/sisteminha-comunidades.png",
+          "captionKey": "sisCap",
+          "altKey": "sisAlt"
+        }
+      ],
+      "descKey": "sisDesc",
+      "links": [
+        [
+          "demo",
+          "https://sisteminha-comunidades.vercel.app/"
+        ]
+      ]
+    },
+    {
+      "id": "aniver-lembre",
+      "name": "Aniver Lembre",
+      "featured": false,
+      "stack": [
+        "Python",
+        "Django",
+        "HTML",
+        "Tailwind",
+        "JavaScript"
+      ],
+      "images": [
+        {
+          "file": "assets/screenshots/aniver-lembre-login.png",
+          "captionKey": "anivCap",
+          "altKey": "anivAlt"
+        }
+      ],
+      "descKey": "anivDesc",
+      "links": [
+        [
+          "demo",
+          "https://aniver-lembre-web.vercel.app/"
+        ],
+        [
+          "repo",
+          "https://github.com/antonioclaudioofc/aniver_lembre_replace"
+        ]
+      ]
+    }
+  ]
+}
